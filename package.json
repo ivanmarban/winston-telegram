@@ -1,32 +1,36 @@
 {
-	"name": "winston-telegram",
-	"description": "A Telegram transport for winston",
-	"version": "0.1.0",
-	"author": "Ivan Marban",
-	"repository": {
-		"type": "git",
-		"url": "http://github.com/ivanmarban/winston-telegram.git"
-	},
-	"keywords": ["logging",
-	"sysadmin",
-	"tools",
-	"winston",
-	"telegram",
-	"bot"],
-	"dependencies": {
-		"request": "^2.65.0"
-	},
-	"devDependencies": {
-		"winston": ""
-	},
-	"peerDependencies": {
-		"winston": "",
-		"vows": ""
-	},
-	"main": "./lib/winston-telegram",
-	"scripts": { "test": "vows test/*test.js --spec" },
-	"engines": {
-		"node": ">= 0.10.0"
-	},
-	"license": "MIT"
+  "name": "winston-telegram",
+  "description": "A Telegram transport for winston",
+  "version": "0.2.0",
+  "author": "Ivan Marban",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/ivanmarban/winston-telegram.git"
+  },
+  "keywords": [
+    "logging",
+    "sysadmin",
+    "tools",
+    "winston",
+    "telegram",
+    "bot"
+  ],
+  "dependencies": {
+    "request": "^2.69.0"
+  },
+  "devDependencies": {
+    "winston": ""
+  },
+  "peerDependencies": {
+    "winston": "",
+    "vows": ""
+  },
+  "main": "./lib/winston-telegram",
+  "scripts": {
+    "test": "vows test/*test.js --spec"
+  },
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "license": "MIT"
 }
