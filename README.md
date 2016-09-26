@@ -32,6 +32,13 @@ Options are the following:
 * __unique:__ Whether to log only the declared level and none above. *[boolean]* *[optional]*
 * __silent:__ Whether to suppress output. *[boolean]* *[optional]*
 * __disable_notification:__ Sends the message silently. *[boolean]* *[optional]*
+* __template:__ Format output message. *[optional]*
+
+String template is based on named arguments:
+``` js
+'{level}' -> level of messages
+'{message}' -> text of messages
+```
 
 ## Examples
 Using the Default Logger 
@@ -77,6 +84,25 @@ var logger = new (winston.Logger)({
 
 logger.error('All work and no play makes Jack a dull boy.');
 logger.info('Come play with us, Danny. Forever... and ever... and ever.');
+```
+
+Using template output:
+``` js
+var winston = require('winston');
+
+require('winston-telegram').Telegram;
+
+winston.add(winston.transports.Telegram, {
+		token : 'TELEGRAM_TOKEN',
+		chatid : 'CHAT_ID',
+		level : 'error',
+		unique : true,
+		template : '[{level}] [{message}]'
+    });
+
+winston.log('error', 'Redrum. Redrum. Redrum.');
+
+//Output: [error] [Redrum. Redrum. Redrum.]
 ```
 
 [0]: https://telegram.org/
