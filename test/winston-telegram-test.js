@@ -14,7 +14,7 @@ var TelegramTransport;
 
 TelegramTransport = new(Telegram)({
   token: '177492804:AAG318J_PjC03-okUmqQV652EDbf_Rr0vTo',
-  chatid: '-50115750'
+  chatId: '-50115750'
 });
 
 function assertTelegram(transport) {
