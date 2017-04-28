@@ -39,6 +39,7 @@ String template is based on named arguments:
 ``` js
 '{level}' -> level of messages
 '{message}' -> text of messages
+'{meta}' -> meta object of messages
 ```
 
 Due applying some coding style, you must change these option properties if you're updating from lower versions to 1.0.0:
@@ -103,12 +104,12 @@ winston.add(winston.transports.Telegram, {
 		chatId : 'CHAT_ID',
 		level : 'error',
 		unique : true,
-		template : '[{level}] [{message}]'
+		template : '[{level}] [{message}] [{meta.property1}] [{meta.property2}]'
     });
 
-winston.log('error', 'Redrum. Redrum. Redrum.');
+winston.log('error', 'Redrum. Redrum. Redrum.', { property1: 'foo', property2: 'bar' });
 
-//Output: [error] [Redrum. Redrum. Redrum.]
+//Output: [error] [Redrum. Redrum. Redrum.] [foo] [bar]
 ```
 
 ## Change history
