@@ -16,7 +16,7 @@
     "bot"
   ],
   "dependencies": {
-    "request": "^2.79.0",
+    "request": "^2.81.0",
     "sf": "^0.1.8"
   },
   "devDependencies": {
