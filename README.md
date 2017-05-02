@@ -39,9 +39,10 @@ String template is based on named arguments:
 ``` js
 '{level}' -> level of messages
 '{message}' -> text of messages
+'{metadata}' -> metadata object of messages
 ```
 
-Due applying some coding style, you must change these option properties if you're updating from lower versions to 1.0.0:
+Due applying some coding style, you must change these option properties if you're updating from lower versions to >=1.0.0:
 
 - chatid to chatId
 - disable_notificacion to disableNotification
@@ -103,15 +104,20 @@ winston.add(winston.transports.Telegram, {
 		chatId : 'CHAT_ID',
 		level : 'error',
 		unique : true,
-		template : '[{level}] [{message}]'
+		template : '[{level}] [{message}] [{metadata.name}] [{metadata.surname}]'
     });
 
-winston.log('error', 'Redrum. Redrum. Redrum.');
+winston.log('error', 'Redrum. Redrum. Redrum.', { name: 'Danny', surname: 'Torrance' });
 
-//Output: [error] [Redrum. Redrum. Redrum.]
+//Output: [error] [Redrum. Redrum. Redrum.] [Danny] [Torrance]
 ```
 
 ## Change history
+
+### v1.1.0 (2017/05/02)
+- [#7](https://github.com/ivanmarban/winston-telegram/pull/7) Use metadata information in messages (@alberto467)
+- [#7](https://github.com/ivanmarban/winston-telegram/pull/7) Replace built-in format function by sf node module (@alberto467)
+- Update dependencies
 
 ### v1.0.0 (2016/12/05)
 - [#6](https://github.com/ivanmarban/winston-telegram/pull/6) Add optional handleExceptions param (@speedone)
