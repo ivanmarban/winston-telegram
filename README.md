@@ -104,7 +104,7 @@ winston.add(winston.transports.Telegram, {
 		chatId : 'CHAT_ID',
 		level : 'error',
 		unique : true,
-		template : '[{level}] [{message}] [{meta.name}] [{meta.surname}]'
+		template : '[{level}] [{message}] [{metadata.name}] [{metadata.surname}]'
     });
 
 winston.log('error', 'Redrum. Redrum. Redrum.', { name: 'Danny', surname: 'Torrance' });
