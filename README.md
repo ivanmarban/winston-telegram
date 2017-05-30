@@ -34,6 +34,8 @@ Options are the following:
 * __disableNotification:__ Sends the message silently. *[boolean]* *[optional]*
 * __template:__ Format output message. *[optional]*
 * __handleExceptions:__ Handle uncaught exceptions. *[boolean]* *[optional]*
+* __batchingDelay:__ Time in ms within which to batch messages together. *[integer]* *[optional]* *[default 0 or disabled]*
+* __batchingSeparator:__ String with which to join batched messages with *[string]* *[default "\n\n"]*
 
 String template is based on named arguments:
 ``` js
@@ -48,7 +50,7 @@ Due applying some coding style, you must change these option properties if you'r
 - disable_notificacion to disableNotification
 
 ## Examples
-Using the Default Logger 
+Using the Default Logger
 ``` js
 var winston = require('winston');
 
@@ -58,7 +60,7 @@ winston.add(winston.transports.Telegram, {
 		token : 'TELEGRAM_TOKEN',
 		chatId : 'CHAT_ID',
 		level : 'error',
-		unique : true	
+		unique : true
     });
 
 winston.log('error', 'Heeere’s Johnny!');
@@ -76,7 +78,7 @@ var logger = new (winston.Logger)({
 			token : 'TELEGRAM_TOKEN',
 			chatId : 'CHAT_ID_1',
 			level : 'error',
-			unique : true	
+			unique : true
 		}),
 		new (winston.transports.Telegram)({
 			name: 'info-channel',
@@ -110,6 +112,49 @@ winston.add(winston.transports.Telegram, {
 winston.log('error', 'Redrum. Redrum. Redrum.', { name: 'Danny', surname: 'Torrance' });
 
 //Output: [error] [Redrum. Redrum. Redrum.] [Danny] [Torrance]
+```
+
+Using batching of messages to avoid exceeding rate limits:
+``` js
+var winston = require('winston');
+
+require('winston-telegram').Telegram;
+
+winston.add(winston.transports.Telegram, {
+		token : 'TELEGRAM_TOKEN',
+		chatId : 'CHAT_ID',
+		level : 'info',
+		batchingDelay: 1000
+});
+
+// first message triggers a new batchingDelay wait
+winston.info('First message: '+(new Date()).toString());
+// second message is within the batchingDelay wait triggered by the first
+// message, so will be batched
+winston.info('Second message: '+(new Date()).toString());
+
+setTimeout(function() {
+  // third message is also within the wait, so also batched
+  winston.info('Third message: '+(new Date()).toString());
+}, 500);
+
+setTimeout(function() {
+  // fourth message is not within the wait, will be sent separately
+  winston.info('Fourth message: '+(new Date()).toString());
+}, 1500);
+
+/*
+ * Output on Telegram:
+ * Sent at 5:22:49PM:
+ *   [info] First message: Tue May 30 2017 17:22:47 GMT+0800 (+08)
+ *
+ *   [info] Second message: Tue May 30 2017 17:22:47 GMT+0800 (+08)
+ *
+ *   [info] Third message: Tue May 30 2017 17:22:47 GMT+0800 (+08)
+ *
+ * Sent at 5:22:50PM:
+ *   [info] Fourth message: Tue May 30 2017 17:22:48 GMT+0800 (+08)
+ */
 ```
 
 ## Change history
