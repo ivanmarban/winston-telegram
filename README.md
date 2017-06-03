@@ -159,13 +159,16 @@ setTimeout(function() {
 
 ## Change history
 
+### v1.2.0 (2017/03/06)
+- [#8](https://github.com/ivanmarban/winston-telegram/pull/8) Add batching of messages sent within a certain interval ([@JustinOng][4])
+
 ### v1.1.0 (2017/05/02)
-- [#7](https://github.com/ivanmarban/winston-telegram/pull/7) Use metadata information in messages (@alberto467)
-- [#7](https://github.com/ivanmarban/winston-telegram/pull/7) Replace built-in format function by sf node module (@alberto467)
+- [#7](https://github.com/ivanmarban/winston-telegram/pull/7) Use metadata information in messages ([@alberto467][3])
+- [#7](https://github.com/ivanmarban/winston-telegram/pull/7) Replace built-in format function by sf node module ([@alberto467][3])
 - Update dependencies
 
 ### v1.0.0 (2016/12/05)
-- [#6](https://github.com/ivanmarban/winston-telegram/pull/6) Add optional handleExceptions param (@speedone)
+- [#6](https://github.com/ivanmarban/winston-telegram/pull/6) Add optional handleExceptions param ([@speedone][2])
 - Node.js coding style
 - Change option properties for matching coding style
 
@@ -189,3 +192,6 @@ setTimeout(function() {
 
 [0]: https://telegram.org/
 [1]: https://github.com/flatiron/winston
+[2]: https://github.com/speedone
+[3]: https://github.com/alberto467
+[4]: https://github.com/JustinOng
