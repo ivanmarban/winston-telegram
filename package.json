@@ -17,7 +17,7 @@
   ],
   "dependencies": {
     "request": "^2.81.0",
-    "sf": "^0.1.8"
+    "sf": "^0.1.9"
   },
   "devDependencies": {
     "winston": "",
