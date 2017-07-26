@@ -161,6 +161,7 @@ setTimeout(function() {
 
 ### v1.2.1 (2017/07/26)
 - [#9](https://github.com/ivanmarban/winston-telegram/pull/9) Add error description in case of error ([@dutu][5])
+- Update sf library
 
 ### v1.2.0 (2017/03/06)
 - [#8](https://github.com/ivanmarban/winston-telegram/pull/8) Add batching of messages sent within a certain interval ([@JustinOng][4])
