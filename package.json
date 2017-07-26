@@ -1,7 +1,7 @@
 {
   "name": "winston-telegram",
   "description": "A Telegram transport for winston",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "author": "Ivan Marban",
   "repository": {
     "type": "git",
@@ -17,7 +17,7 @@
   ],
   "dependencies": {
     "request": "^2.81.0",
-    "sf": "^0.1.8"
+    "sf": "^0.1.9"
   },
   "devDependencies": {
     "winston": "",
