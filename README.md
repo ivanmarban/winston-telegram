@@ -159,6 +159,9 @@ setTimeout(function() {
 
 ## Change history
 
+### v1.2.1 (2017/07/26)
+- [#9](https://github.com/ivanmarban/winston-telegram/pull/9) Add error description in case of error ([@dutu][5])
+
 ### v1.2.0 (2017/03/06)
 - [#8](https://github.com/ivanmarban/winston-telegram/pull/8) Add batching of messages sent within a certain interval ([@JustinOng][4])
 
@@ -195,3 +198,4 @@ setTimeout(function() {
 [2]: https://github.com/speedone
 [3]: https://github.com/alberto467
 [4]: https://github.com/JustinOng
+[5]: https://github.com/dutu
