@@ -32,7 +32,8 @@ Options are the following:
 * __unique:__ Whether to log only the declared level and none above. *[boolean]* *[optional]*
 * __silent:__ Whether to suppress output. *[boolean]* *[optional]*
 * __disableNotification:__ Sends the message silently. *[boolean]* *[optional]*
-* __template:__ Format output message. *[optional]*
+* __template:__ Format output message. *[string]* *[optional]*
+* __formatMessage:__ Format output message by own method. *[function]* *[optional]*
 * __handleExceptions:__ Handle uncaught exceptions. *[boolean]* *[optional]*
 * __batchingDelay:__ Time in ms within which to batch messages together. *[integer]* *[optional]* *[default 0 or disabled]*
 * __batchingSeparator:__ String with which to join batched messages with *[string]* *[default "\n\n"]*
@@ -112,6 +113,32 @@ winston.add(winston.transports.Telegram, {
 winston.log('error', 'Redrum. Redrum. Redrum.', { name: 'Danny', surname: 'Torrance' });
 
 //Output: [error] [Redrum. Redrum. Redrum.] [Danny] [Torrance]
+```
+
+Using custom format message:
+```js
+var winston = require('winston');
+
+require('winston-telegram').Telegram;
+
+winston.add(winston.transports.Telegram, {
+		token : 'TELEGRAM_TOKEN',
+		chatId : 'CHAT_ID',
+		level : 'error',
+		unique : true,
+		formatMessage : function(opts) {
+		    var message = opts.message;
+		    
+		    if (opts.level === 'warn') {
+		        message += '[Warning] ';
+		    }
+		    return message;
+		}
+    });
+
+winston.warn('Some warning!!');
+
+//Output: [Warning] Some warning!!
 ```
 
 Using batching of messages to avoid exceeding rate limits:
