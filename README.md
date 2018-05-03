@@ -32,7 +32,8 @@ Options are the following:
 * __unique:__ Whether to log only the declared level and none above. *[boolean]* *[optional]*
 * __silent:__ Whether to suppress output. *[boolean]* *[optional]*
 * __disableNotification:__ Sends the message silently. *[boolean]* *[optional]*
-* __template:__ Format output message. *[optional]*
+* __template:__ Format output message. *[string]* *[optional]*
+* __formatMessage:__ Format output message by own method. *[function]* *[optional]*
 * __handleExceptions:__ Handle uncaught exceptions. *[boolean]* *[optional]*
 * __batchingDelay:__ Time in ms within which to batch messages together. *[integer]* *[optional]* *[default 0 or disabled]*
 * __batchingSeparator:__ String with which to join batched messages with *[string]* *[default "\n\n"]*
@@ -114,6 +115,32 @@ winston.log('error', 'Redrum. Redrum. Redrum.', { name: 'Danny', surname: 'Torra
 //Output: [error] [Redrum. Redrum. Redrum.] [Danny] [Torrance]
 ```
 
+Using custom format message:
+```js
+var winston = require('winston');
+
+require('winston-telegram').Telegram;
+
+winston.add(winston.transports.Telegram, {
+		token : 'TELEGRAM_TOKEN',
+		chatId : 'CHAT_ID',
+		level : 'error',
+		unique : true,
+		formatMessage : function(opts) {
+		    var message = opts.message;
+		    
+		    if (opts.level === 'warn') {
+		        message += '[Warning] ';
+		    }
+		    return message;
+		}
+    });
+
+winston.warn('Some warning!!');
+
+//Output: [Warning] Some warning!!
+```
+
 Using batching of messages to avoid exceeding rate limits:
 ``` js
 var winston = require('winston');
@@ -159,6 +186,9 @@ setTimeout(function() {
 
 ## Change history
 
+### v1.3.0 (2018/05/03)
+- [#10](https://github.com/ivanmarban/winston-telegram/pull/10) Add formatMessage property ([@noveogroup-amorgunov][6])
+
 ### v1.2.1 (2017/07/26)
 - [#9](https://github.com/ivanmarban/winston-telegram/pull/9) Add error description in case of error ([@dutu][5])
 - Update sf library
@@ -200,3 +230,4 @@ setTimeout(function() {
 [3]: https://github.com/alberto467
 [4]: https://github.com/JustinOng
 [5]: https://github.com/dutu
+[6]: https://github.com/noveogroup-amorgunov
