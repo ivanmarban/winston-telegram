@@ -186,6 +186,9 @@ setTimeout(function() {
 
 ## Change history
 
+### v1.3.0 (2018/05/03)
+- [#10](https://github.com/ivanmarban/winston-telegram/pull/10) Add formatMessage property ([@noveogroup-amorgunov][6])
+
 ### v1.2.1 (2017/07/26)
 - [#9](https://github.com/ivanmarban/winston-telegram/pull/9) Add error description in case of error ([@dutu][5])
 - Update sf library
@@ -227,3 +230,4 @@ setTimeout(function() {
 [3]: https://github.com/alberto467
 [4]: https://github.com/JustinOng
 [5]: https://github.com/dutu
+[6]: https://github.com/noveogroup-amorgunov
