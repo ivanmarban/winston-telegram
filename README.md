@@ -7,8 +7,8 @@ A [Telegram][0] transport for [winston][1].
 ## Installation
 
 ``` sh
-$ npm install winston
-$ npm install winston-telegram
+$ npm install winston@2
+$ npm install winston-telegram@1
 ```
 
 ## Usage
@@ -112,7 +112,7 @@ winston.add(winston.transports.Telegram, {
 
 winston.log('error', 'Redrum. Redrum. Redrum.', { name: 'Danny', surname: 'Torrance' });
 
-//Output: [error] [Redrum. Redrum. Redrum.] [Danny] [Torrance]
+// Output: [error] [Redrum. Redrum. Redrum.] [Danny] [Torrance]
 ```
 
 Using custom format message:
@@ -138,7 +138,7 @@ winston.add(winston.transports.Telegram, {
 
 winston.warn('Some warning!!');
 
-//Output: [Warning] Some warning!!
+// Output: [Warning] Some warning!!
 ```
 
 Using batching of messages to avoid exceeding rate limits:
@@ -186,6 +186,10 @@ setTimeout(function() {
 
 ## Change history
 
+### v1.3.1 (2019/01/07)
+- [#12](https://github.com/ivanmarban/winston-telegram/pull/12) Fix comments ([@is2ei][7])
+- Update dependencies
+
 ### v1.3.0 (2018/05/03)
 - [#10](https://github.com/ivanmarban/winston-telegram/pull/10) Add formatMessage property ([@noveogroup-amorgunov][6])
 
@@ -231,3 +235,4 @@ setTimeout(function() {
 [4]: https://github.com/JustinOng
 [5]: https://github.com/dutu
 [6]: https://github.com/noveogroup-amorgunov
+[7]: https://github.com/is2ei
