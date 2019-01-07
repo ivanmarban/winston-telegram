@@ -20,13 +20,9 @@
     "sf": "^0.2.0"
   },
   "devDependencies": {
-    "winston": "2.4.4",
-    "vows": ""
+    "winston": "^3.0.0"
   },
   "main": "./lib/winston-telegram",
-  "scripts": {
-    "test": "vows test/*test.js --spec"
-  },
   "engines": {
     "node": ">= 0.10.0"
   },
