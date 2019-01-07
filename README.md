@@ -4,24 +4,23 @@
 
 A [Telegram][0] transport for [winston][1].
 
-## Installation
+## winston-telegram@2
 
+Installation:
 ``` sh
-$ npm install winston@2
-$ npm install winston-telegram@1
+$ npm install winston@3
+$ npm install winston-telegram@2
 ```
+
+## Looking for `winston-telegram@1.x` ?
+Documentation below is for `winston-telegram@2`. [Read the `winston-telegram@1.x` documentation][8].
 
 ## Usage
 ``` js
-var winston = require('winston');
+const logger = require('winston');
+const telegramLogger = require('winston-telegram');
 
-/*
- * Requiring `winston-telegram` will expose
- * `winston.transports.Telegram`
- */
-require('winston-telegram').Telegram;
-
-winston.add(winston.transports.Telegram, options);
+logger.add(new telegramLogger({options}));
 ```
 
 Options are the following:
@@ -53,44 +52,43 @@ Due applying some coding style, you must change these option properties if you'r
 ## Examples
 Using the Default Logger
 ``` js
-var winston = require('winston');
+const logger = require('winston');
+const telegramLogger = require('winston-telegram');
 
-require('winston-telegram').Telegram;
+logger.add(new telegramLogger({
+  token: 'TELEGRAM_TOKEN',
+  chatId: 'CHAT_ID',
+  level: 'error',
+  unique: true
+}));
 
-winston.add(winston.transports.Telegram, {
-		token : 'TELEGRAM_TOKEN',
-		chatId : 'CHAT_ID',
-		level : 'error',
-		unique : true
-    });
-
-winston.log('error', 'Heeere’s Johnny!');
+logger.error('Heeere’s Johnny!');
+logger.log({level: 'error', message: 'Heeere’s Johnny!'});
 ```
 Multiple transports, different chats, different options
 ``` js
-var winston = require('winston');
+const winston = require('winston');
+const telegramLogger = require('winston-telegram');
 
-require('winston-telegram').Telegram;
-
-var logger = new (winston.Logger)({
-	transports: [
-		new (winston.transports.Telegram)({
-			name: 'error-channel',
-			token : 'TELEGRAM_TOKEN',
-			chatId : 'CHAT_ID_1',
-			level : 'error',
-			unique : true
-		}),
-		new (winston.transports.Telegram)({
-			name: 'info-channel',
-			token : 'TELEGRAM_TOKEN',
-			chatId : 'CHAT_ID_2',
-			level : 'info',
-			unique : true,
-			disableNotification: true
-		})
-	]
-});
+const logger = winston.createLogger({
+  transports: [
+    new telegramLogger({
+      name: 'error-channel',
+      token: 'TELEGRAM_TOKEN',
+      chatId: 'CHAT_ID',
+      level: 'error',
+      unique: true
+    }),
+    new telegramLogger({
+      name: 'info-channel',
+      token: 'TELEGRAM_TOKEN',
+      chatId: 'CHAT_ID',
+      level: 'info',
+      unique: true,
+      disableNotification: true
+    })
+  ]
+})
 
 logger.error('All work and no play makes Jack a dull boy.');
 logger.info('Come play with us, Danny. Forever... and ever... and ever.');
@@ -98,76 +96,72 @@ logger.info('Come play with us, Danny. Forever... and ever... and ever.');
 
 Using template output:
 ``` js
-var winston = require('winston');
+const logger = require('winston');
+const telegramLogger = require('winston-telegram');
 
-require('winston-telegram').Telegram;
+logger.add(new telegramLogger( {
+  token : 'TELEGRAM_TOKEN',
+  chatId : 'CHAT_ID',
+  level : 'error',
+  unique : true,
+  template : '[{level}] [{message}] [{metadata.name}] [{metadata.surname}]'
+}));
 
-winston.add(winston.transports.Telegram, {
-		token : 'TELEGRAM_TOKEN',
-		chatId : 'CHAT_ID',
-		level : 'error',
-		unique : true,
-		template : '[{level}] [{message}] [{metadata.name}] [{metadata.surname}]'
-    });
-
-winston.log('error', 'Redrum. Redrum. Redrum.', { name: 'Danny', surname: 'Torrance' });
+logger.log({ level: 'error', message: 'Redrum. Redrum. Redrum.', metadata: { name: 'Danny', surname: 'Torrance' }});
 
 // Output: [error] [Redrum. Redrum. Redrum.] [Danny] [Torrance]
 ```
 
 Using custom format message:
 ```js
-var winston = require('winston');
+const logger = require('winston');
+const telegramLogger = require('winston-telegram');
 
-require('winston-telegram').Telegram;
+logger.add(new telegramLogger( {
+  token : 'TELEGRAM_TOKEN',
+  chatId : 'CHAT_ID',
+  level : 'warn',
+  unique : true,
+  formatMessage : function(options) {
+    let message = options.message;
+    if (options.level === 'warn') {
+      message = '[Warning] ' + message;
+    }
+    return message;
+  }
+}));
 
-winston.add(winston.transports.Telegram, {
-		token : 'TELEGRAM_TOKEN',
-		chatId : 'CHAT_ID',
-		level : 'error',
-		unique : true,
-		formatMessage : function(opts) {
-		    var message = opts.message;
-		    
-		    if (opts.level === 'warn') {
-		        message += '[Warning] ';
-		    }
-		    return message;
-		}
-    });
-
-winston.warn('Some warning!!');
+logger.warn('Some warning!!');
 
 // Output: [Warning] Some warning!!
 ```
 
 Using batching of messages to avoid exceeding rate limits:
 ``` js
-var winston = require('winston');
+const logger = require('winston');
+const telegramLogger = require('winston-telegram');
 
-require('winston-telegram').Telegram;
-
-winston.add(winston.transports.Telegram, {
-		token : 'TELEGRAM_TOKEN',
-		chatId : 'CHAT_ID',
-		level : 'info',
-		batchingDelay: 1000
-});
+logger.add(new telegramLogger( {
+  token : 'TELEGRAM_TOKEN',
+  chatId : 'CHAT_ID',
+  level : 'info',
+  batchingDelay: 1000
+}));
 
 // first message triggers a new batchingDelay wait
-winston.info('First message: '+(new Date()).toString());
+logger.info('First message: '+(new Date()).toString());
 // second message is within the batchingDelay wait triggered by the first
 // message, so will be batched
-winston.info('Second message: '+(new Date()).toString());
+logger.info('Second message: '+(new Date()).toString());
 
 setTimeout(function() {
   // third message is also within the wait, so also batched
-  winston.info('Third message: '+(new Date()).toString());
+  logger.info('Third message: '+(new Date()).toString());
 }, 500);
 
 setTimeout(function() {
   // fourth message is not within the wait, will be sent separately
-  winston.info('Fourth message: '+(new Date()).toString());
+  logger.info('Fourth message: '+(new Date()).toString());
 }, 1500);
 
 /*
@@ -185,6 +179,9 @@ setTimeout(function() {
 ```
 
 ## Change history
+
+### v2.0.0 (2019/01/07)
+- `winston@3` support
 
 ### v1.3.1 (2019/01/07)
 - [#12](https://github.com/ivanmarban/winston-telegram/pull/12) Fix comments ([@is2ei][7])
@@ -236,3 +233,4 @@ setTimeout(function() {
 [5]: https://github.com/dutu
 [6]: https://github.com/noveogroup-amorgunov
 [7]: https://github.com/is2ei
+[8]: https://github.com/ivanmarban/winston-telegram/tree/1.x
