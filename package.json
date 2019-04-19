@@ -19,12 +19,25 @@
     "request": "^2.88.0",
     "sf": "^0.2.0"
   },
-  "devDependencies": {
+  "peerDependencies": {
     "winston": "^3.0.0"
   },
   "main": "./lib/winston-telegram",
   "engines": {
     "node": ">= 0.10.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-promise": "^4.1.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "prettier-standard": "^9.1.1"
+  },
+  "scripts": {
+    "lint": "eslint lib --color",
+    "format": "prettier-standard 'lib/**/*.js'"
+  }
 }
