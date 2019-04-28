@@ -2,7 +2,8 @@
   "env": {
     "commonjs": true,
     "es6": true,
-    "node": true
+    "node": true,
+    "mocha": true
   },
   "plugins": [
     "jsdoc"
@@ -37,6 +38,12 @@
     "jsdoc/require-returns-check": 1,
     "jsdoc/require-returns-description": 1,
     "jsdoc/require-returns-type": 1,
-    "jsdoc/valid-types": 1
+    "jsdoc/valid-types": 1,
+    "no-unused-vars": [
+      "error",
+      {
+        "varsIgnorePattern": "should"
+      }
+    ]
   }
 }
