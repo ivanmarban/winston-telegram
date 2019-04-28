@@ -1,11 +1,14 @@
 {
   "name": "winston-telegram",
   "description": "A Telegram transport for winston",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "author": "Ivan Marban",
   "repository": {
     "type": "git",
-    "url": "http://github.com/ivanmarban/winston-telegram.git"
+    "url": "https://github.com/ivanmarban/winston-telegram.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ivanmarban/winston-telegram/issues"
   },
   "keywords": [
     "logging",
@@ -17,14 +20,39 @@
   ],
   "dependencies": {
     "request": "^2.88.0",
-    "sf": "^0.2.0"
+    "sf": "^0.2.0",
+    "winston-transport": "^4.3.0"
   },
-  "devDependencies": {
+  "peerDependencies": {
     "winston": "^3.0.0"
   },
-  "main": "./lib/winston-telegram",
+  "main": "lib/winston-telegram",
   "engines": {
-    "node": ">= 0.10.0"
+    "node": ">= 6.4.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "eslint": "^5.16.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-jsdoc": "^4.8.3",
+    "eslint-plugin-mocha": "^5.3.0",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-promise": "^4.1.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "mocha": "^6.1.4",
+    "mockery": "^2.1.0",
+    "nyc": "^14.0.0",
+    "prettier-standard": "^9.1.1",
+    "sinon": "^7.3.2",
+    "winston": "^3.0.0"
+  },
+  "scripts": {
+    "lint": "eslint lib test examples --color",
+    "format": "prettier-standard 'lib/**/*.js' 'test/**/*.js' 'examples/**/*.js'",
+    "test": "nyc --reporter=text --reporter lcov npm run test:mocha",
+    "test:mocha": "mocha --exit",
+    "test:coverage": "nyc --reporter=text --reporter=html npm run test:mocha"
+  }
 }
