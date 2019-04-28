@@ -49,8 +49,8 @@
     "winston": "^3.0.0"
   },
   "scripts": {
-    "lint": "eslint lib --color",
-    "format": "prettier-standard 'lib/**/*.js' 'test/**/*.js'",
+    "lint": "eslint lib test examples --color",
+    "format": "prettier-standard 'lib/**/*.js' 'test/**/*.js' 'examples/**/*.js'",
     "test": "nyc --reporter=text --reporter lcov npm run test:mocha",
     "test:mocha": "mocha --exit",
     "test:coverage": "nyc --reporter=text --reporter=html npm run test:mocha"
