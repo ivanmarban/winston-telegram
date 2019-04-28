@@ -326,7 +326,7 @@ describe('winston-telegram', function () {
       } catch (error) {
         expect(error.message)
           .to.be.an('string')
-          .that.equals("Unhandled error. ('error')")
+          .that.contains('error')
       }
     })
 
@@ -346,7 +346,7 @@ describe('winston-telegram', function () {
       } catch (error) {
         expect(error.message)
           .to.be.an('string')
-          .that.equals("Unhandled error. ('503: foo')")
+          .that.contains('503: foo')
       }
     })
 
@@ -366,7 +366,7 @@ describe('winston-telegram', function () {
       } catch (error) {
         expect(error.message)
           .to.be.an('string')
-          .that.equals("Unhandled error. ('503')")
+          .that.contains('503')
       }
     })
   })
