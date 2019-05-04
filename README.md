@@ -4,6 +4,12 @@
 
 A [Telegram][0] transport for [winston][1].
 
+![NPM (Tag)](https://img.shields.io/npm/v/winston-telegram/1.x-latest.svg)
+[![NPM Downloads](https://img.shields.io/npm/dw/winston-telegram.svg)](https://npmcharts.com/compare/winston-telegram?minimal=true)
+[![Build Status](https://travis-ci.org/ivanmarban/winston-telegram.svg?branch=1.x)](https://travis-ci.org/ivanmarban/winston-telegram)
+[![Dependencies Status](https://david-dm.org/ivanmarban/winston-telegram/1.x/status.svg)](https://david-dm.org/ivanmarban/winston-telegram)
+[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+
 ## Installation
 
 ``` sh
@@ -13,15 +19,15 @@ $ npm install winston-telegram@1
 
 ## Usage
 ``` js
-var winston = require('winston');
+var winston = require('winston')
 
 /*
  * Requiring `winston-telegram` will expose
  * `winston.transports.Telegram`
  */
-require('winston-telegram').Telegram;
+require('winston-telegram').Telegram
 
-winston.add(winston.transports.Telegram, options);
+winston.add(winston.transports.Telegram, options)
 ```
 
 Options are the following:
@@ -51,188 +57,19 @@ Due applying some coding style, you must change these option properties if you'r
 - disable_notificacion to disableNotification
 
 ## Examples
-Using the Default Logger
-``` js
-var winston = require('winston');
 
-require('winston-telegram').Telegram;
+Follow above steps to run the examples:
 
-winston.add(winston.transports.Telegram, {
-		token : 'TELEGRAM_TOKEN',
-		chatId : 'CHAT_ID',
-		level : 'error',
-		unique : true
-    });
-
-winston.log('error', 'Heeere’s Johnny!');
-```
-Multiple transports, different chats, different options
-``` js
-var winston = require('winston');
-
-require('winston-telegram').Telegram;
-
-var logger = new (winston.Logger)({
-	transports: [
-		new (winston.transports.Telegram)({
-			name: 'error-channel',
-			token : 'TELEGRAM_TOKEN',
-			chatId : 'CHAT_ID_1',
-			level : 'error',
-			unique : true
-		}),
-		new (winston.transports.Telegram)({
-			name: 'info-channel',
-			token : 'TELEGRAM_TOKEN',
-			chatId : 'CHAT_ID_2',
-			level : 'info',
-			unique : true,
-			disableNotification: true
-		})
-	]
-});
-
-logger.error('All work and no play makes Jack a dull boy.');
-logger.info('Come play with us, Danny. Forever... and ever... and ever.');
+``` sh
+$ git clone git@github.com:ivanmarban/winston-telegram.git -b 1.x --single-branch
+$ npm install
 ```
 
-Using template output:
-``` js
-var winston = require('winston');
+Replace `TELEGRAM_TOKEN` and `CHAT_ID` with appropiate values, then run whatever example you want:
 
-require('winston-telegram').Telegram;
-
-winston.add(winston.transports.Telegram, {
-		token : 'TELEGRAM_TOKEN',
-		chatId : 'CHAT_ID',
-		level : 'error',
-		unique : true,
-		template : '[{level}] [{message}] [{metadata.name}] [{metadata.surname}]'
-    });
-
-winston.log('error', 'Redrum. Redrum. Redrum.', { name: 'Danny', surname: 'Torrance' });
-
-// Output: [error] [Redrum. Redrum. Redrum.] [Danny] [Torrance]
+``` sh
+$ node test/default-logger.js
 ```
-
-Using custom format message:
-```js
-var winston = require('winston');
-
-require('winston-telegram').Telegram;
-
-winston.add(winston.transports.Telegram, {
-		token : 'TELEGRAM_TOKEN',
-		chatId : 'CHAT_ID',
-		level : 'error',
-		unique : true,
-		formatMessage : function(opts) {
-		    var message = opts.message;
-		    
-		    if (opts.level === 'warn') {
-		        message += '[Warning] ';
-		    }
-		    return message;
-		}
-    });
-
-winston.warn('Some warning!!');
-
-// Output: [Warning] Some warning!!
-```
-
-Using batching of messages to avoid exceeding rate limits:
-``` js
-var winston = require('winston');
-
-require('winston-telegram').Telegram;
-
-winston.add(winston.transports.Telegram, {
-		token : 'TELEGRAM_TOKEN',
-		chatId : 'CHAT_ID',
-		level : 'info',
-		batchingDelay: 1000
-});
-
-// first message triggers a new batchingDelay wait
-winston.info('First message: '+(new Date()).toString());
-// second message is within the batchingDelay wait triggered by the first
-// message, so will be batched
-winston.info('Second message: '+(new Date()).toString());
-
-setTimeout(function() {
-  // third message is also within the wait, so also batched
-  winston.info('Third message: '+(new Date()).toString());
-}, 500);
-
-setTimeout(function() {
-  // fourth message is not within the wait, will be sent separately
-  winston.info('Fourth message: '+(new Date()).toString());
-}, 1500);
-
-/*
- * Output on Telegram:
- * Sent at 5:22:49PM:
- *   [info] First message: Tue May 30 2017 17:22:47 GMT+0800 (+08)
- *
- *   [info] Second message: Tue May 30 2017 17:22:47 GMT+0800 (+08)
- *
- *   [info] Third message: Tue May 30 2017 17:22:47 GMT+0800 (+08)
- *
- * Sent at 5:22:50PM:
- *   [info] Fourth message: Tue May 30 2017 17:22:48 GMT+0800 (+08)
- */
-```
-
-## Change history
-
-### v1.3.1 (2019/01/07)
-- [#12](https://github.com/ivanmarban/winston-telegram/pull/12) Fix comments ([@is2ei][7])
-- Update dependencies
-
-### v1.3.0 (2018/05/03)
-- [#10](https://github.com/ivanmarban/winston-telegram/pull/10) Add formatMessage property ([@noveogroup-amorgunov][6])
-
-### v1.2.1 (2017/07/26)
-- [#9](https://github.com/ivanmarban/winston-telegram/pull/9) Add error description in case of error ([@dutu][5])
-- Update sf library
-
-### v1.2.0 (2017/03/06)
-- [#8](https://github.com/ivanmarban/winston-telegram/pull/8) Add batching of messages sent within a certain interval ([@JustinOng][4])
-
-### v1.1.0 (2017/05/02)
-- [#7](https://github.com/ivanmarban/winston-telegram/pull/7) Use metadata information in messages ([@alberto467][3])
-- [#7](https://github.com/ivanmarban/winston-telegram/pull/7) Replace built-in format function by sf node module ([@alberto467][3])
-- Update dependencies
-
-### v1.0.0 (2016/12/05)
-- [#6](https://github.com/ivanmarban/winston-telegram/pull/6) Add optional handleExceptions param ([@speedone][2])
-- Node.js coding style
-- Change option properties for matching coding style
-
-### v0.4.0 (2016/09/26)
-- [#5](https://github.com/ivanmarban/winston-telegram/issues/5) Add message template option
-- Update dependencies
-- Remove peer dependecies
-
-### v0.3.0 (2016/07/17)
-- [#2](https://github.com/ivanmarban/winston-telegram/issues/2) Allow multiple transports, send messages silently
-- Update dependencies
-
-### v0.2.1 (2016/03/30)
-- Fix typos
-
-### v0.2.0 (2016/03/08)
-- [#1](https://github.com/ivanmarban/winston-telegram/issues/1) Add log level option
-
-### v0.1.0 (2015/11/12)
-- First version
 
 [0]: https://telegram.org/
 [1]: https://github.com/flatiron/winston
-[2]: https://github.com/speedone
-[3]: https://github.com/alberto467
-[4]: https://github.com/JustinOng
-[5]: https://github.com/dutu
-[6]: https://github.com/noveogroup-amorgunov
-[7]: https://github.com/is2ei
