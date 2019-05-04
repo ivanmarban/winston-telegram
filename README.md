@@ -64,7 +64,7 @@ $ npm install
 Replace `TELEGRAM_TOKEN` and `CHAT_ID` with appropiate values, then run whatever example you want:
 
 ``` sh
-$ node test/default-logger.js
+$ node examples/default-logger.js
 ```
 
 [0]: https://telegram.org/
