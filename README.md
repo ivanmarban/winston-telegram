@@ -7,7 +7,7 @@ A [Telegram][0] transport for [winston][1].
 [![NPM (Tag)](https://img.shields.io/npm/v/winston-telegram/1.x-latest.svg)](https://www.npmjs.com/package/winston-telegram)
 [![NPM Downloads](https://img.shields.io/npm/dw/winston-telegram.svg)](https://npmcharts.com/compare/winston-telegram?minimal=true)
 [![Build Status](https://travis-ci.org/ivanmarban/winston-telegram.svg?branch=1.x)](https://travis-ci.org/ivanmarban/winston-telegram)
-[![Dependencies Status](https://david-dm.org/ivanmarban/winston-telegram/1.x/status.svg)](https://david-dm.org/ivanmarban/winston-telegram)
+[![Dependencies Status](https://david-dm.org/ivanmarban/winston-telegram/1.x/status.svg)](https://david-dm.org/ivanmarban/winston-telegram/1.x)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=SJLW6PTHQQNBS)
 
