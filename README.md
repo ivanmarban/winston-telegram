@@ -4,7 +4,7 @@
 
 A [Telegram][0] transport for [winston][1].
 
-![NPM (Tag)](https://img.shields.io/npm/v/winston-telegram/1.x-latest.svg)
+[![NPM (Tag)](https://img.shields.io/npm/v/winston-telegram/1.x-latest.svg)](https://www.npmjs.com/package/winston-telegram)
 [![NPM Downloads](https://img.shields.io/npm/dw/winston-telegram.svg)](https://npmcharts.com/compare/winston-telegram?minimal=true)
 [![Build Status](https://travis-ci.org/ivanmarban/winston-telegram.svg?branch=1.x)](https://travis-ci.org/ivanmarban/winston-telegram)
 [![Dependencies Status](https://david-dm.org/ivanmarban/winston-telegram/1.x/status.svg)](https://david-dm.org/ivanmarban/winston-telegram)
