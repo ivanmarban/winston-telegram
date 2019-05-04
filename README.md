@@ -54,7 +54,7 @@ String template is based on named arguments:
 
 ## Examples
 
-Follow above steps to run the examples:
+Follow below steps to run the examples:
 
 ``` sh
 $ git clone git@github.com:ivanmarban/winston-telegram.git -b 1.x --single-branch
