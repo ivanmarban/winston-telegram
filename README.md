@@ -9,6 +9,7 @@ A [Telegram][0] transport for [winston][1].
 [![Build Status](https://travis-ci.org/ivanmarban/winston-telegram.svg?branch=1.x)](https://travis-ci.org/ivanmarban/winston-telegram)
 [![Dependencies Status](https://david-dm.org/ivanmarban/winston-telegram/1.x/status.svg)](https://david-dm.org/ivanmarban/winston-telegram)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![Donate](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=SJLW6PTHQQNBS)
 
 ## Installation
 
@@ -42,7 +43,7 @@ Options are the following:
 * __formatMessage:__ Format output message by own method. *[function]* *[optional]*
 * __handleExceptions:__ Handle uncaught exceptions. *[boolean]* *[optional]*
 * __batchingDelay:__ Time in ms within which to batch messages together. *[integer]* *[optional]* *[default 0 or disabled]*
-* __batchingSeparator:__ String with which to join batched messages with *[string]* *[default "\n\n"]*
+* __batchingSeparator:__ String with which to join batched messages with *[string]* *[default '\n\n']*
 
 String template is based on named arguments:
 ``` js
@@ -50,11 +51,6 @@ String template is based on named arguments:
 '{message}' -> text of messages
 '{metadata}' -> metadata object of messages
 ```
-
-Due applying some coding style, you must change these option properties if you're updating from lower versions to >=1.0.0:
-
-- chatid to chatId
-- disable_notificacion to disableNotification
 
 ## Examples
 
