@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [v1.3.3] - 2019-05-26
+- Replace [Request](https://github.com/request/request) by standard https Node.js lib.
+- Fix custom-format example.
+
 ## [v1.3.2] - 2019-05-04
 - Code style & JSDoc
 
@@ -53,6 +57,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - First version.
 
 [unreleased]: https://github.com/ivanmarban/winston-telegram/compare/v1.3.2...1.x
+[v1.3.3]: https://github.com/ivanmarban/winston-telegram/compare/v1.3.2...v1.3.3
 [v1.3.2]: https://github.com/ivanmarban/winston-telegram/compare/v1.3.1...v1.3.2
 [v1.3.1]: https://github.com/ivanmarban/winston-telegram/compare/v1.3.0...v1.3.1
 [v1.3.0]: https://github.com/ivanmarban/winston-telegram/compare/v1.2.1...v1.3.0
