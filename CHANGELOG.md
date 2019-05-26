@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-## [v1.3.3] - 2019-05-26
+## [v1.4.0] - 2019-05-26
 - Replace [Request](https://github.com/request/request) by standard https Node.js lib.
 - Fix custom-format example.
 
