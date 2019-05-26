@@ -9,7 +9,7 @@ require('../lib/winston-telegram').Telegram
 winston.add(winston.transports.Telegram, {
   token: 'TELEGRAM_TOKEN',
   chatId: 'CHAT_ID',
-  level: 'error',
+  level: 'warn',
   unique: true,
   formatMessage: function (opts) {
     var message = opts.message
