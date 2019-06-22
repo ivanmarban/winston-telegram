@@ -10,6 +10,7 @@ A [Telegram][0] transport for [winston][1].
 [![Coverage Status](https://coveralls.io/repos/github/ivanmarban/winston-telegram/badge.svg?branch=master)](https://coveralls.io/github/ivanmarban/winston-telegram?branch=master)
 [![dependencies Status](https://david-dm.org/ivanmarban/winston-telegram/status.svg)](https://david-dm.org/ivanmarban/winston-telegram)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![Donate](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=SJLW6PTHQQNBS)
 
 ## winston-telegram@2
 
