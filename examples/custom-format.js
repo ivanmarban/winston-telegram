@@ -3,7 +3,7 @@
  */
 
 const logger = require('winston')
-const TelegramLogger = require('winston-telegram')
+const TelegramLogger = require('../lib/winston-telegram')
 
 logger.add(
   new TelegramLogger({

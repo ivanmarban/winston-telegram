@@ -10,6 +10,7 @@ A [Telegram][0] transport for [winston][1].
 [![Coverage Status](https://coveralls.io/repos/github/ivanmarban/winston-telegram/badge.svg?branch=master)](https://coveralls.io/github/ivanmarban/winston-telegram?branch=master)
 [![dependencies Status](https://david-dm.org/ivanmarban/winston-telegram/status.svg)](https://david-dm.org/ivanmarban/winston-telegram)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![Donate](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=SJLW6PTHQQNBS)
 
 ## winston-telegram@2
 
@@ -53,7 +54,18 @@ String template is based on named arguments:
 
 ## Examples
 
-Take a look at the [examples][3]
+Follow below steps to run the examples:
+
+``` sh
+$ git clone git@github.com:ivanmarban/winston-telegram.git -b master --single-branch
+$ npm install
+```
+
+Replace `TELEGRAM_TOKEN` and `CHAT_ID` with appropiate values, then run whatever example you want:
+
+``` sh
+$ node examples/default-logger.js
+```
 
 [0]: https://telegram.org/
 [1]: https://github.com/flatiron/winston

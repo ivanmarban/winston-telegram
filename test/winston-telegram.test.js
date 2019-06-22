@@ -4,30 +4,26 @@ const assert = require('chai').assert
 const sinon = require('sinon')
 const Transport = require('../lib/winston-telegram')
 const winston = require('winston')
-const mockery = require('mockery')
+const nock = require('nock')
 
 describe('winston-telegram', function () {
   describe('Creating the transport', function () {
-    it("Should throw an error when 'token' or 'chatId' are undefined", function () {
-      ;(() => new Transport()).should.throw(
-        Error,
-        "winston-telegram requires 'token' and 'chatId' property"
-      )
+    it("Should throw an error when 'token' or 'chatId' are undefined", function (done) {
+      ;(() => new Transport()).should.throw(Error, "winston-telegram requires 'token' and 'chatId' property")
+      done()
     })
 
-    it("Should throw an error when 'formatMessage' is not a function", function () {
+    it("Should throw an error when 'formatMessage' is not a function", function (done) {
       ;(() =>
         new Transport({
           token: 'foo',
           chatId: 'bar',
           formatMessage: 'foo'
-        })).should.throw(
-        Error,
-        "winston-telegram 'formatMessage' property should be function"
-      )
+        })).should.throw(Error, "winston-telegram 'formatMessage' property should be function")
+      done()
     })
 
-    it('Should have default options when instantiated', function () {
+    it('Should have default options when instantiated', function (done) {
       const transport = new Transport({ token: 'foo', chatId: 'bar' })
 
       assert.ok(transport.level === 'info')
@@ -40,9 +36,10 @@ describe('winston-telegram', function () {
       assert.ok(transport.formatMessage === undefined)
       assert.ok(transport.batchingDelay === 0)
       assert.ok(transport.batchingSeparator === '\n\n')
+      done()
     })
 
-    it('Should allow options to be set when instantiated', function () {
+    it('Should allow options to be set when instantiated', function (done) {
       const transport = new Transport({
         name: 'error-channel',
         token: 'foo',
@@ -64,77 +61,74 @@ describe('winston-telegram', function () {
       assert.ok(transport.name === 'error-channel')
       assert.ok(transport.template === '{level} -- {message}')
       assert.ok(typeof transport.formatMessage === 'function')
+      done()
     })
 
-    it("Should have a 'log' function", function () {
+    it("Should have a 'log' function", function (done) {
       const transport = new Transport({ token: 'foo', chatId: 'bar' })
       assert.ok(typeof transport.log === 'function')
+      done()
     })
 
-    it("Should have a 'send' function", function () {
+    it("Should have a 'send' function", function (done) {
       const transport = new Transport({ token: 'foo', chatId: 'bar' })
       assert.ok(typeof transport.send === 'function')
+      done()
     })
 
-    it('Can be registered as winston transport', function () {
+    it("Should have a 'request' function", function (done) {
+      const transport = new Transport({ token: 'foo', chatId: 'bar' })
+      assert.ok(typeof transport.request === 'function')
+      done()
+    })
+
+    it('Can be registered as winston transport', function (done) {
       const logger = winston.createLogger({
         transports: [new Transport({ token: 'foo', chatId: 'bar' })]
       })
       assert.ok(logger._readableState.pipes.hasOwnProperty('token'))
+      done()
     })
   })
 
   describe('Logging messages', function () {
-    before(function () {
-      mockery.enable({
-        warnOnReplace: false,
-        warnOnUnregistered: false,
-        useCleanCache: true
-      })
-      this.requestStub = sinon.stub()
-      mockery.registerMock('request', this.requestStub)
-      this.TelegramTransport = require('../lib/winston-telegram')
-      this.clock = sinon.useFakeTimers()
-    })
+    let spy, clock
 
     beforeEach(function () {
       winston.remove()
-      this.requestStub.reset()
+      clock = sinon.useFakeTimers()
+      spy = sinon.spy(Transport.prototype, 'request')
     })
 
-    after(function () {
-      mockery.disable()
-      this.clock.restore()
+    afterEach(function () {
+      nock.cleanAll()
+      clock.restore()
+      if (spy) spy.restore()
     })
 
-    it("Should send 'error' message", function () {
-      this.requestStub.yields(
-        null,
-        { statusCode: 200 },
-        { ok: true, result: {} }
-      )
+    it("Should send 'error' message", function (done) {
+      nock('https://api.telegram.org')
+        .post('/botfoo/sendMessage')
+        .reply(200, { ok: true, result: {} })
       winston.add(
-        new this.TelegramTransport({
+        new Transport({
           token: 'foo',
           chatId: 'bar',
           level: 'error'
         })
       )
       winston.log({ level: 'error', message: 'error message' })
-      assert.strictEqual(
-        this.requestStub.getCalls()[0].args[0]['json']['text'],
-        '[error] error message'
-      )
+      assert.strictEqual(JSON.parse(spy.getCalls()[0].args[1]).text, '[error] error message')
+      assert.ok(spy.callCount === 1)
+      done()
     })
 
-    it("Should send 'verbose' message only", function () {
-      this.requestStub.yields(
-        null,
-        { statusCode: 200 },
-        { ok: true, result: {} }
-      )
+    it("Should send 'verbose' message only", function (done) {
+      nock('https://api.telegram.org')
+        .post('/botfoo/sendMessage')
+        .reply(200, { ok: true, result: {} })
       winston.add(
-        new this.TelegramTransport({
+        new Transport({
           token: 'foo',
           chatId: 'bar',
           level: 'verbose',
@@ -143,21 +137,18 @@ describe('winston-telegram', function () {
       )
       winston.log({ level: 'verbose', message: 'verbose message' })
       winston.log({ level: 'info', message: 'info message' })
-      assert.strictEqual(
-        this.requestStub.getCalls()[0].args[0]['json']['text'],
-        '[verbose] verbose message'
-      )
-      assert.ok(this.requestStub.callCount === 1)
+      assert.strictEqual(JSON.parse(spy.getCalls()[0].args[1]).text, '[verbose] verbose message')
+      assert.ok(spy.callCount === 1)
+      done()
     })
 
-    it('Should suppress output', function () {
-      this.requestStub.yields(
-        null,
-        { statusCode: 200 },
-        { ok: true, result: {} }
-      )
+    it('Should suppress output', function (done) {
+      nock('https://api.telegram.org')
+        .post('/botfoo/sendMessage')
+        .optionally()
+        .reply(200, { ok: true, result: {} })
       winston.add(
-        new this.TelegramTransport({
+        new Transport({
           token: 'foo',
           chatId: 'bar',
           level: 'error',
@@ -165,17 +156,17 @@ describe('winston-telegram', function () {
         })
       )
       winston.log({ level: 'error', message: 'error message' })
-      assert.ok(this.requestStub.callCount === 0)
+      assert.ok(spy.callCount === 0)
+      done()
     })
 
-    it('Should send message without notification', function () {
-      this.requestStub.yields(
-        null,
-        { statusCode: 200 },
-        { ok: true, result: {} }
-      )
+    it('Should send message without notification', function (done) {
+      nock('https://api.telegram.org')
+        .post('/botfoo/sendMessage')
+        .optionally()
+        .reply(200, { ok: true, result: {} })
       winston.add(
-        new this.TelegramTransport({
+        new Transport({
           token: 'foo',
           chatId: 'bar',
           level: 'error',
@@ -183,30 +174,22 @@ describe('winston-telegram', function () {
         })
       )
       winston.log({ level: 'error', message: 'error message' })
-      assert.ok(this.requestStub.callCount === 1)
-      assert.strictEqual(
-        '[error] error message',
-        this.requestStub.getCalls()[0].args[0]['json']['text']
-      )
-      assert.strictEqual(
-        this.requestStub.getCalls()[0].args[0]['json']['disable_notification'],
-        true
-      )
+      assert.strictEqual(JSON.parse(spy.getCalls()[0].args[1]).text, '[error] error message')
+      assert.strictEqual(JSON.parse(spy.getCalls()[0].args[1]).disable_notification, true)
+      assert.ok(spy.callCount === 1)
+      done()
     })
 
-    it('Should send formatted message by template', function () {
-      this.requestStub.yields(
-        null,
-        { statusCode: 200 },
-        { ok: true, result: {} }
-      )
+    it('Should send formatted message by template', function (done) {
+      nock('https://api.telegram.org')
+        .post('/botfoo/sendMessage')
+        .reply(200, { ok: true, result: {} })
       winston.add(
-        new this.TelegramTransport({
+        new Transport({
           token: 'foo',
           chatId: 'bar',
           level: 'error',
-          template:
-            '[{level}] [{message}] [{metadata.name}] [{metadata.surname}]'
+          template: '[{level}] [{message}] [{metadata.name}] [{metadata.surname}]'
         })
       )
       winston.log({
@@ -214,21 +197,17 @@ describe('winston-telegram', function () {
         message: 'foo',
         metadata: { name: 'bar', surname: 'baz' }
       })
-      assert.strictEqual(
-        this.requestStub.getCalls()[0].args[0]['json']['text'],
-        '[error] [foo] [bar] [baz]'
-      )
-      assert.ok(this.requestStub.callCount === 1)
+      assert.strictEqual(JSON.parse(spy.getCalls()[0].args[1]).text, '[error] [foo] [bar] [baz]')
+      assert.ok(spy.callCount === 1)
+      done()
     })
 
-    it('Should send formatted message by custom function', function () {
-      this.requestStub.yields(
-        null,
-        { statusCode: 200 },
-        { ok: true, result: {} }
-      )
+    it('Should send formatted message by custom function', function (done) {
+      nock('https://api.telegram.org')
+        .post('/botfoo/sendMessage')
+        .reply(200, { ok: true, result: {} })
       winston.add(
-        new this.TelegramTransport({
+        new Transport({
           token: 'foo',
           chatId: 'bar',
           level: 'error',
@@ -242,21 +221,18 @@ describe('winston-telegram', function () {
         })
       )
       winston.error('Some error!!')
-      assert.strictEqual(
-        this.requestStub.getCalls()[0].args[0]['json']['text'],
-        '[Error] Some error!!'
-      )
-      assert.ok(this.requestStub.callCount === 1)
+      assert.strictEqual(JSON.parse(spy.getCalls()[0].args[1]).text, '[Error] Some error!!')
+      assert.ok(spy.callCount === 1)
+      done()
     })
 
-    it('Should send batching of messages', function () {
-      this.requestStub.yields(
-        null,
-        { statusCode: 200 },
-        { ok: true, result: {} }
-      )
+    it('Should send batching of messages', function (done) {
+      nock('https://api.telegram.org')
+        .post('/botfoo/sendMessage')
+        .times(2)
+        .reply(200, { ok: true, result: {} })
       winston.add(
-        new this.TelegramTransport({
+        new Transport({
           token: 'foo',
           chatId: 'bar',
           level: 'info',
@@ -271,103 +247,91 @@ describe('winston-telegram', function () {
       setTimeout(function () {
         winston.info('Fourth message: ' + new Date().toString())
       }, 1500)
-      this.clock.tick(2500)
-      expect(this.requestStub.getCalls()[0].args[0]['json']['text'])
+      clock.tick(2500)
+      expect(JSON.parse(spy.getCalls()[0].args[1]).text)
         .to.be.an('string')
         .that.includes('First message')
-      expect(this.requestStub.getCalls()[0].args[0]['json']['text'])
+      expect(JSON.parse(spy.getCalls()[0].args[1]).text)
         .to.be.an('string')
         .that.includes('Second message')
-      expect(this.requestStub.getCalls()[0].args[0]['json']['text'])
+      expect(JSON.parse(spy.getCalls()[0].args[1]).text)
         .to.be.an('string')
         .that.includes('Third message')
-      expect(this.requestStub.getCalls()[1].args[0]['json']['text'])
+      expect(JSON.parse(spy.getCalls()[1].args[1]).text)
         .to.be.an('string')
         .that.includes('Fourth message')
-      assert.ok(this.requestStub.callCount === 2)
+      assert.ok(spy.callCount === 2)
+      done()
     })
   })
-  describe('Handling uncaught exceptions', function () {
-    // figure out a better way of testing uncaught exceptions since mocha wraps them
-    before(function () {
-      mockery.enable({
-        warnOnReplace: false,
-        warnOnUnregistered: false,
-        useCleanCache: true
+
+  describe('Emitting errors', function () {
+    it('Should emit error if request returns an error', function (done) {
+      nock('https://api.telegram.org')
+        .post('/botfoo/sendMessage')
+        .replyWithError('something awful happened')
+      const transport = new Transport({
+        token: 'foo',
+        chatId: 'bar',
+        level: 'error'
       })
-      this.requestStub = sinon.stub()
-      mockery.registerMock('request', this.requestStub)
-      this.TelegramTransport = require('../lib/winston-telegram')
-      this.clock = sinon.useFakeTimers()
+      const logger = winston.createLogger({
+        transports: [transport],
+        exitOnError: false
+      })
+      logger.on('error', function (error) {
+        expect(error)
+          .to.be.an.instanceOf(Error)
+          .that.has.property('message')
+          .that.is.a('string')
+          .that.eq('something awful happened')
+        done()
+      })
+      logger.error('error')
     })
 
-    after(function () {
-      mockery.disable()
-      this.clock.restore()
+    it('Should emit error if request returns statusCode !== 200', function (done) {
+      nock('https://api.telegram.org')
+        .post('/botfoo/sendMessage')
+        .reply(500, { ok: false, description: 'something awful happened' })
+      const transport = new Transport({
+        token: 'foo',
+        chatId: 'bar',
+        level: 'error'
+      })
+      const logger = winston.createLogger({
+        transports: [transport],
+        exitOnError: false
+      })
+      logger.on('error', function (error) {
+        expect(error)
+          .to.be.a('string')
+          .that.eq('500: something awful happened')
+        done()
+      })
+      logger.error('error')
     })
 
-    it('Should handle general error', function () {
-      this.requestStub.yields(
-        'error',
-        { statusCode: 500 },
-        { ok: false, result: {} }
-      )
-      winston.exceptions.handle(new winston.transports.Console())
-      winston.add(
-        new this.TelegramTransport({
-          token: 'foo',
-          chatId: 'bar',
-          level: 'info',
-          handleExceptions: true
-        })
-      )
-      try {
-        winston.error('foo')
-      } catch (error) {
-        expect(error.message)
-          .to.be.an('string')
-          .that.contains('error')
-      }
-    })
-
-    it('Should handle statusCode !== 200 error', function () {
-      this.requestStub.yields(null, { statusCode: 503 }, { description: 'foo' })
-      winston.exceptions.handle(new winston.transports.Console())
-      winston.add(
-        new this.TelegramTransport({
-          token: 'foo',
-          chatId: 'bar',
-          level: 'info',
-          handleExceptions: true
-        })
-      )
-      try {
-        winston.error('foo')
-      } catch (error) {
-        expect(error.message)
-          .to.be.an('string')
-          .that.contains('503: foo')
-      }
-    })
-
-    it('Should handle statusCode !== 200 error with blank body', function () {
-      this.requestStub.yields(null, { statusCode: 503 }, {})
-      winston.exceptions.handle(new winston.transports.Console())
-      winston.add(
-        new this.TelegramTransport({
-          token: 'foo',
-          chatId: 'bar',
-          level: 'info',
-          handleExceptions: true
-        })
-      )
-      try {
-        winston.error('foo')
-      } catch (error) {
-        expect(error.message)
-          .to.be.an('string')
-          .that.contains('503')
-      }
+    it('Should emit error if request returns statusCode !== 200 with empty body', function (done) {
+      nock('https://api.telegram.org')
+        .post('/botfoo/sendMessage')
+        .reply(500, { ok: false, description: null })
+      const transport = new Transport({
+        token: 'foo',
+        chatId: 'bar',
+        level: 'error'
+      })
+      const logger = winston.createLogger({
+        transports: [transport],
+        exitOnError: false
+      })
+      logger.on('error', function (error) {
+        expect(error)
+          .to.be.a('string')
+          .that.eq('500')
+        done()
+      })
+      logger.error('error')
     })
   })
 })
