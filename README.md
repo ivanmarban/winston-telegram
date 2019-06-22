@@ -54,7 +54,18 @@ String template is based on named arguments:
 
 ## Examples
 
-Take a look at the [examples][3]
+Follow below steps to run the examples:
+
+``` sh
+$ git clone git@github.com:ivanmarban/winston-telegram.git -b master --single-branch
+$ npm install
+```
+
+Replace `TELEGRAM_TOKEN` and `CHAT_ID` with appropiate values, then run whatever example you want:
+
+``` sh
+$ node examples/default-logger.js
+```
 
 [0]: https://telegram.org/
 [1]: https://github.com/flatiron/winston
