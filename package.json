@@ -19,7 +19,6 @@
     "bot"
   ],
   "dependencies": {
-    "request": "^2.88.0",
     "sf": "^0.2.0",
     "winston-transport": "^4.3.0"
   },
@@ -43,7 +42,7 @@
     "eslint-plugin-promise": "^4.1.1",
     "eslint-plugin-standard": "^4.0.0",
     "mocha": "^6.1.4",
-    "mockery": "^2.1.0",
+    "nock": "^10.0.6",
     "nyc": "^14.0.0",
     "prettier-standard": "^9.1.1",
     "sinon": "^7.3.2",
