@@ -15,7 +15,7 @@ winston.add(winston.transports.Telegram, {
     var message = opts.message
 
     if (opts.level === 'warn') {
-      message += '[Warning] '
+      message = '[Warning] ' + message
     }
     return message
   }
