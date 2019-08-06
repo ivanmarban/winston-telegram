@@ -86,7 +86,7 @@ describe('winston-telegram', function () {
       const logger = winston.createLogger({
         transports: [new Transport({ token: 'foo', chatId: 'bar' })]
       })
-      assert.ok(logger._readableState.pipes.hasOwnProperty('token'))
+      assert.ok(Object.prototype.hasOwnProperty.call(logger._readableState.pipes, 'token'))
       done()
     })
   })
