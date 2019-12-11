@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [v1.4.2] - 2019-12-11
+- [#16](https://github.com/ivanmarban/winston-telegram/issues/16) Use `Buffer.byteLength` to compute the `Content-Length` header.
+
+## [v1.4.1] - 2019-06-22
+- Code refactoring.
+- Fix custom-format example.
+
 ## [v1.4.0] - 2019-05-26
 - Replace [Request](https://github.com/request/request) by standard https Node.js lib.
 - Fix custom-format example.
@@ -56,7 +63,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [v0.1.0] - 2015-11-12
 - First version.
 
-[unreleased]: https://github.com/ivanmarban/winston-telegram/compare/v1.4.0...1.x
+[[unreleased]: https://github.com/ivanmarban/winston-telegram/compare/v1.4.2...1.x
+[v1.4.2]: https://github.com/ivanmarban/winston-telegram/compare/v1.4.1...v1.4.2
+[v1.4.1]: https://github.com/ivanmarban/winston-telegram/compare/v1.4.0...v1.4.1
 [v1.4.0]: https://github.com/ivanmarban/winston-telegram/compare/v1.3.2...v1.4.0
 [v1.3.2]: https://github.com/ivanmarban/winston-telegram/compare/v1.3.1...v1.3.2
 [v1.3.1]: https://github.com/ivanmarban/winston-telegram/compare/v1.3.0...v1.3.1
