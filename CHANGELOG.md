@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [v2.2.1] - 2019-12-11
+- [#16](https://github.com/ivanmarban/winston-telegram/issues/16) Use `Buffer.byteLength` to compute the `Content-Length` header.
+
 ## [v2.2.0] - 2019-08-06
 - [#13](https://github.com/ivanmarban/winston-telegram/pull/13) Add typescript typings. ([@Multivit4min](https://github.com/Multivit4min))
 - Update dependencies.
@@ -66,7 +69,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [v0.1.0] - 2015-11-12
 - First version.
 
-[unreleased]: https://github.com/ivanmarban/winston-telegram/compare/v2.2.0...develop
+[unreleased]: https://github.com/ivanmarban/winston-telegram/compare/v2.2.1...develop
+[v2.2.1]: https://github.com/ivanmarban/winston-telegram/compare/v2.2.0...v2.2.1
 [v2.2.0]: https://github.com/ivanmarban/winston-telegram/compare/v2.1.0...v2.2.0
 [v2.1.0]: https://github.com/ivanmarban/winston-telegram/compare/v2.0.1...v2.1.0
 [v2.0.1]: https://github.com/ivanmarban/winston-telegram/compare/v2.0.0...v2.0.1
