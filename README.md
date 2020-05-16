@@ -42,6 +42,7 @@ Options:
 * __template:__ Format output message. *[string]* *[optional]*
 * __formatMessage:__ Format output message by own method. *[function]* *[optional]*
 * __handleExceptions:__ Handle uncaught exceptions. *[boolean]* *[optional]*
+* __parseMode:__ Telegram's sendMessage parse_mode *[string]* *[optional]*
 * __batchingDelay:__ Time in ms within which to batch messages together. *[integer]* *[optional]* *[default 0 or disabled]*
 * __batchingSeparator:__ String with which to join batched messages with *[string]* *[default "\n\n"]*
 
