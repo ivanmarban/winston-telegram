@@ -8,12 +8,12 @@ declare namespace WinstonTelegram {
   export interface Options {
     /** The Telegram bot authentication token. */
     token: string
-    /** The chatid you want to send to. */
+    /** The Telegram chatid you want to send to. */
     chatId: number
+    /** The Telegram mode for parsing entities in the message text. */
+    parseMode: string
     /** Level of messages that this transport should log. (default "info") */
     level?: string
-    /** Handle uncaught exceptions. (default false) */
-    handleExceptions?: boolean
     /** Whether to log only the declared level and none above. (default false) */
     unique?: boolean
     /** Whether to suppress output. (default false) */
@@ -26,6 +26,8 @@ declare namespace WinstonTelegram {
     template?: string
     /** Format output message by own method. */
     formatMessage?: (params: WinstonTelegram.FormatOptions) => string
+    /** Handle uncaught exceptions. (default false) */
+    handleExceptions?: boolean
     /** Time in ms within which to batch messages together. (default = 0) (0 = disabled) */
     batchingDelay?: number
     /** String with which to join batched messages with (default "\n\n") */
