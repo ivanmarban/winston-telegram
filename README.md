@@ -34,7 +34,8 @@ logger.add(new TelegramLogger(options))
 Options:
 
 * __token:__ The Telegram bot authentication token. *[required]*
-* __chatId:__ The chatid you want to send to. *[required]*
+* __chatId:__ The Telegram chatid you want to send to. *[required]*
+* __parseMode:__ The Telegram mode for parsing entities in the message text. See [formatting options][4] for more details. *[optional]*
 * __level:__ Level of messages that this transport should log. *[optional]* *[default info]*
 * __unique:__ Whether to log only the declared level and none above. *[boolean]* *[optional]*
 * __silent:__ Whether to suppress output. *[boolean]* *[optional]*
@@ -71,3 +72,4 @@ $ node examples/default-logger.js
 [1]: https://github.com/flatiron/winston
 [2]: https://github.com/ivanmarban/winston-telegram/tree/1.x
 [3]: https://github.com/ivanmarban/winston-telegram/tree/master/examples
+[4]: https://core.telegram.org/bots/api#formatting-options
