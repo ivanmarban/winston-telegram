@@ -12,7 +12,7 @@ A [Telegram][0] transport for [winston][1].
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=SJLW6PTHQQNBS)
 
-## winston-telegram@2
+## winston-telegram@3
 
 Installation:
 ``` sh
@@ -21,7 +21,7 @@ $ npm install winston-telegram@2
 ```
 
 ## Looking for `winston-telegram@1.x` ?
-Documentation below is for `winston-telegram@2`. [Read the `winston-telegram@1.x` documentation][2].
+Documentation below is for `winston-telegram@3`. [Read the `winston-telegram@1.x` documentation][2].
 
 ## Usage
 ``` js
