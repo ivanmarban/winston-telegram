@@ -32,6 +32,8 @@ declare namespace WinstonTelegram {
     batchingDelay?: number
     /** String with which to join batched messages with (default "\n\n") */
     batchingSeparator?: string
+    /** if set true it use the winston formatter */
+    useWinstonFormatter?: boolean
   }
 
   export interface FormatOptions {
