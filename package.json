@@ -20,6 +20,7 @@
   ],
   "dependencies": {
     "sf": "^0.2.0",
+    "triple-beam": "^1.3.0",
     "winston-transport": "^4.3.0"
   },
   "peerDependencies": {
