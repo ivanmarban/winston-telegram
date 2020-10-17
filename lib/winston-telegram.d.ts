@@ -42,4 +42,4 @@ declare namespace WinstonTelegram {
 
 }
 
-export default WinstonTelegram
+export = WinstonTelegram
