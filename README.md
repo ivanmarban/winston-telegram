@@ -28,6 +28,9 @@ Documentation below is for `winston-telegram@3`. [Read the `winston-telegram@1.x
 const logger = require('winston')
 const TelegramLogger = require('winston-telegram')
 
+// or
+import * as TelegramLogger from 'winston-telegram';
+
 logger.add(new TelegramLogger(options))
 ```
 
