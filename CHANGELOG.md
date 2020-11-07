@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [v2.3.1] - 2020-11-07
+### Fixed
+- [#23](https://github.com/ivanmarban/winston-telegram/pull/23) Fixed Typescript definition.
+
 ## [v2.3.0] - 2020-05-31
 ### Added
 - [#17](https://github.com/ivanmarban/winston-telegram/pull/17) [#19](https://github.com/ivanmarban/winston-telegram/pull/19) Parse mode support for messages.
@@ -112,7 +116,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [v0.1.0] - 2015-11-12
 - First version.
 
-[unreleased]: https://github.com/ivanmarban/winston-telegram/compare/v2.3.0...develop
+[unreleased]: https://github.com/ivanmarban/winston-telegram/compare/v2.3.1...develop
+[v2.3.1]: https://github.com/ivanmarban/winston-telegram/compare/v2.3.0...v2.3.1
 [v2.3.0]: https://github.com/ivanmarban/winston-telegram/compare/v2.2.2...v2.3.0
 [v2.2.2]: https://github.com/ivanmarban/winston-telegram/compare/v2.2.1...v2.2.2
 [v2.2.1]: https://github.com/ivanmarban/winston-telegram/compare/v2.2.0...v2.2.1
