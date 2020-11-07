@@ -21,7 +21,7 @@ $ npm install winston-telegram@2
 ```
 
 ## Looking for `winston-telegram@1.x` ?
-Documentation below is for `winston-telegram@3`. [Read the `winston-telegram@1.x` documentation][2].
+Documentation below is for `winston-telegram@2`. [Read the `winston-telegram@1.x` documentation][2].
 
 ## Usage
 ``` js
