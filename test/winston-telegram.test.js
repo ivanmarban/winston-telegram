@@ -95,7 +95,7 @@ describe('winston-telegram', function () {
     let spy, clock
 
     beforeEach(function () {
-      winston.remove()
+      winston.clear()
       clock = sinon.useFakeTimers()
       spy = sinon.spy(Transport.prototype, 'request')
     })
