@@ -1,7 +1,7 @@
 {
   "name": "winston-telegram",
   "description": "A Telegram transport for winston",
-  "version": "2.3.2",
+  "version": "2.3.3",
   "author": "Ivan Marban",
   "repository": {
     "type": "git",

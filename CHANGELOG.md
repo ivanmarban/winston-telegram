@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [v2.3.3] - 2021-01-24
+### Fixed
+- [#24](https://github.com/ivanmarban/winston-telegram/pull/24) Change parseMode prop as optional.
+
 ## [v2.3.2] - 2020-11-08
 ### Fixed
 - Tests fixed.
@@ -120,7 +124,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [v0.1.0] - 2015-11-12
 - First version.
 
-[unreleased]: https://github.com/ivanmarban/winston-telegram/compare/v2.3.2...develop
+[unreleased]: https://github.com/ivanmarban/winston-telegram/compare/v2.3.3...develop
+[v2.3.3]: https://github.com/ivanmarban/winston-telegram/compare/v2.3.2...v2.3.3
 [v2.3.2]: https://github.com/ivanmarban/winston-telegram/compare/v2.3.1...v2.3.2
 [v2.3.1]: https://github.com/ivanmarban/winston-telegram/compare/v2.3.0...v2.3.1
 [v2.3.0]: https://github.com/ivanmarban/winston-telegram/compare/v2.2.2...v2.3.0
