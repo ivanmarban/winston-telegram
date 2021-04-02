@@ -1,4 +1,4 @@
-import TransportStream from "winston-transport"
+import TransportStream = require("winston-transport")
 
 declare class WinstonTelegram extends TransportStream {
   constructor(options: WinstonTelegram.Options)
