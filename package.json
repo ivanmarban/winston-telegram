@@ -1,7 +1,7 @@
 {
   "name": "winston-telegram",
   "description": "A Telegram transport for winston",
-  "version": "2.3.3",
+  "version": "2.3.4",
   "author": "Ivan Marban",
   "repository": {
     "type": "git",
@@ -37,7 +37,7 @@
     "eslint": "^7.13.0",
     "eslint-config-standard": "^16.0.1",
     "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-jsdoc": "^31.2.2",
+    "eslint-plugin-jsdoc": "^32.3.0",
     "eslint-plugin-mocha": "^8.0.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
@@ -46,7 +46,7 @@
     "nock": "^13.0.4",
     "nyc": "^15.1.0",
     "prettier-standard": "^16.4.1",
-    "sinon": "^9.2.1",
+    "sinon": "^10.0.0",
     "winston": "^3.0.0"
   },
   "scripts": {
