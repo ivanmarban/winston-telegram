@@ -27,7 +27,7 @@ describe('winston-telegram', function () {
       const transport = new Transport({ token: 'foo', chatId: 'bar' })
 
       assert.ok(transport.level === 'info')
-      assert.ok(transport.handleExceptions === false)
+      assert.ok(transport.handleExceptions === true)
       assert.ok(transport.unique === false)
       assert.ok(transport.silent === false)
       assert.ok(transport.disableNotification === false)
