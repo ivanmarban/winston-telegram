@@ -19,7 +19,7 @@
     "bot"
   ],
   "dependencies": {
-    "sf": "^0.2.0",
+    "sf": "^0.1.9",
     "winston-transport": "^4.3.0"
   },
   "peerDependencies": {
@@ -32,21 +32,21 @@
   "types": "lib/winston-telegram",
   "license": "MIT",
   "devDependencies": {
-    "chai": "^4.2.0",
-    "coveralls": "^3.1.0",
-    "eslint": "^7.13.0",
-    "eslint-config-standard": "^16.0.1",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-jsdoc": "^32.3.0",
-    "eslint-plugin-mocha": "^8.0.0",
+    "chai": "^4.3.4",
+    "coveralls": "^3.1.1",
+    "eslint": "^7.32.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-jsdoc": "^36.1.0",
+    "eslint-plugin-mocha": "^9.0.0",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-promise": "^5.1.0",
     "eslint-plugin-standard": "^5.0.0",
-    "mocha": "^8.2.1",
-    "nock": "^13.0.4",
+    "mocha": "^9.1.1",
+    "nock": "^13.1.3",
     "nyc": "^15.1.0",
-    "prettier-standard": "^16.4.1",
-    "sinon": "^10.0.0",
+    "prettier-standard": "^15.0.1",
+    "sinon": "^11.1.2",
     "winston": "^3.0.0"
   },
   "scripts": {
