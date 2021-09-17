@@ -25,7 +25,7 @@ declare namespace WinstonTelegram {
     /** Format output message. (default "[{level}] [message]") */
     template?: string
     /** Format output message by own method. */
-    formatMessage?: (params: WinstonTelegram.FormatOptions) => string
+    formatMessage?: (params: WinstonTelegram.FormatOptions, info: any) => string
     /** Handle uncaught exceptions. (default true) */
     handleExceptions?: boolean
     /** Time in ms within which to batch messages together. (default = 0) (0 = disabled) */

@@ -211,17 +211,23 @@ describe('winston-telegram', function () {
           token: 'foo',
           chatId: 'bar',
           level: 'error',
-          formatMessage: function (options) {
+          formatMessage: function (options, info) {
             let message = options.message
+
             if (options.level === 'error') {
               message = '[Error] ' + message
             }
+
+            if (info.superUrgent) {
+              message += '!!!'
+            }
+
             return message
           }
         })
       )
-      winston.error('Some error!!')
-      assert.strictEqual(JSON.parse(spy.getCalls()[0].args[1]).text, '[Error] Some error!!')
+      winston.error('Some error', {superUrgent: true})
+      assert.strictEqual(JSON.parse(spy.getCalls()[0].args[1]).text, '[Error] Some error!!!')
       assert.ok(spy.callCount === 1)
       done()
     })
