@@ -226,7 +226,7 @@ describe('winston-telegram', function () {
           }
         })
       )
-      winston.error('Some error', {superUrgent: true})
+      winston.error('Some error', { superUrgent: true })
       assert.strictEqual(JSON.parse(spy.getCalls()[0].args[1]).text, '[Error] Some error!!!')
       assert.ok(spy.callCount === 1)
       done()
