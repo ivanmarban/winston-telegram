@@ -52,12 +52,6 @@
   "scripts": {
     "lint": "eslint lib test examples --color",
     "format": "prettier-standard 'lib/**/*.js' 'test/**/*.js' 'examples/**/*.js'",
-<<<<<<< Updated upstream
-    "test": "nyc mocha",
-    "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "test:coverage": "nyc --reporter=text --reporter=html mocha"
-=======
     "test": "nyc --reporter=text --reporter=html --reporter=lcovonly mocha"
->>>>>>> Stashed changes
   }
 }
