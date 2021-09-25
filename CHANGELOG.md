@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [v2.4.0] - 2021-09-25
+### Added
+- [#27](https://github.com/ivanmarban/winston-telegram/pull/27) Pass full data argument to `formatMessage` method.
+
 ## [v2.3.5] - 2021-05-23
 ### Changed
 - [#26](https://github.com/ivanmarban/winston-telegram/issues/26) Set `handleExceptions` option `true` by default.
@@ -132,7 +136,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [v0.1.0] - 2015-11-12
 - First version.
 
-[unreleased]: https://github.com/ivanmarban/winston-telegram/compare/v2.3.5...develop
+[unreleased]: https://github.com/ivanmarban/winston-telegram/compare/v2.4.0...develop
+[v2.4.0]: https://github.com/ivanmarban/winston-telegram/compare/v2.3.5...v2.4.0
 [v2.3.5]: https://github.com/ivanmarban/winston-telegram/compare/v2.3.4...v2.3.5
 [v2.3.4]: https://github.com/ivanmarban/winston-telegram/compare/v2.3.3...v2.3.4
 [v2.3.3]: https://github.com/ivanmarban/winston-telegram/compare/v2.3.2...v2.3.3
