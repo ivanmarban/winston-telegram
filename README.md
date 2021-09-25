@@ -6,8 +6,8 @@ A [Telegram][0] transport for [winston][1].
 
 [![Version npm](https://img.shields.io/npm/v/winston-telegram.svg)](https://www.npmjs.com/package/winston-telegram)
 [![npm Downloads](https://img.shields.io/npm/dw/winston-telegram.svg)](https://npmcharts.com/compare/winston-telegram?minimal=true)
-[![Build Status](https://travis-ci.org/ivanmarban/winston-telegram.svg?branch=master)](https://travis-ci.org/ivanmarban/winston-telegram)
-[![Coverage Status](https://coveralls.io/repos/github/ivanmarban/winston-telegram/badge.svg?branch=master)](https://coveralls.io/github/ivanmarban/winston-telegram?branch=master)
+[![Tests Status](https://github.com/ivanmarban/winston-telegram/actions/workflows/tests.yml/badge.svg?branch=develop)](https://github.com/ivanmarban/winston-telegram/actions)
+[![Coverage Status](https://coveralls.io/repos/github/ivanmarban/winston-telegram/badge.svg?branch=develop)](https://coveralls.io/github/ivanmarban/winston-telegram?branch=develop)
 [![dependencies Status](https://david-dm.org/ivanmarban/winston-telegram/status.svg)](https://david-dm.org/ivanmarban/winston-telegram)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=SJLW6PTHQQNBS)
