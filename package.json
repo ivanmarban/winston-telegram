@@ -19,7 +19,7 @@
     "bot"
   ],
   "dependencies": {
-    "sf": "^0.1.9",
+    "sf": "^0.2.0",
     "winston-transport": "^4.3.0"
   },
   "peerDependencies": {
