@@ -269,6 +269,25 @@ describe('winston-telegram', function () {
       assert.ok(spy.callCount === 2)
       done()
     })
+
+    it('Should send splited message', function (done) {
+      nock('https://api.telegram.org')
+        .post('/botfoo/sendMessage')
+        .times(2)
+        .reply(200, { ok: true, result: {} })
+      winston.add(
+        new Transport({
+          token: 'foo',
+          chatId: 'bar',
+          level: 'error'
+        })
+      )
+      winston.error('a'.repeat(5000))
+      assert.strictEqual(JSON.parse(spy.getCalls()[0].args[1]).text.length, 4096)
+      assert.strictEqual(JSON.parse(spy.getCalls()[1].args[1]).text.length, 912)
+      assert.ok(spy.callCount === 2)
+      done()
+    })
   })
 
   describe('Emitting errors', function () {
