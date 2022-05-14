@@ -14,7 +14,7 @@
     "SharedArrayBuffer": "readonly"
   },
   "parserOptions": {
-    "ecmaVersion": 2022
+    "ecmaVersion": 2020
   },
   "rules": {
     "jsdoc/check-alignment": 1,
