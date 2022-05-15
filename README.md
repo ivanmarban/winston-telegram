@@ -29,7 +29,7 @@ const logger = require('winston')
 const TelegramLogger = require('winston-telegram')
 
 // or
-import * as TelegramLogger from 'winston-telegram';
+import TelegramLogger from 'winston-telegram';
 
 logger.add(new TelegramLogger(options))
 ```
