@@ -15,7 +15,7 @@ jobs:
     timeout-minutes: 5
     strategy:
       matrix:
-        node: [12, 14, 16]
+        node: [14, 16, 18]
     name: Node ${{ matrix.node }} test
     steps:
       - name: Clone repository

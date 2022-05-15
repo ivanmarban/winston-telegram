@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [v2.6.0] - 2022-05-15
+### Fixed
+- [#36](https://github.com/ivanmarban/winston-telegram/pull/36) Handle uncaught exceptions.
+
+### Removed
+-  Replace sf dependency by custom string templating implementation.
+
 ## [v2.5.0] - 2021-11-9
 ### Added
 - [#29](https://github.com/ivanmarban/winston-telegram/issues/29) Split long messages.
@@ -144,7 +151,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [v0.1.0] - 2015-11-12
 - First version.
 
-[unreleased]: https://github.com/ivanmarban/winston-telegram/compare/v2.5.0...develop
+[unreleased]: https://github.com/ivanmarban/winston-telegram/compare/v2.6.0...develop
+[v2.6.0]: https://github.com/ivanmarban/winston-telegram/compare/v2.5.0...v2.6.0
 [v2.5.0]: https://github.com/ivanmarban/winston-telegram/compare/v2.4.1...v2.5.0
 [v2.4.1]: https://github.com/ivanmarban/winston-telegram/compare/v2.4.0...v2.4.1
 [v2.4.0]: https://github.com/ivanmarban/winston-telegram/compare/v2.3.5...v2.4.0
