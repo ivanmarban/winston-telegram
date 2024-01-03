@@ -85,6 +85,28 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - `winston@3` support.
 
+## [v1.4.2] - 2019-12-11
+### Fixed
+- [#16](https://github.com/ivanmarban/winston-telegram/issues/16) Use `Buffer.byteLength` to compute the `Content-Length` header.
+
+## [v1.4.1] - 2019-06-22
+### Fixed
+- Fix custom-format example.
+
+### Changed
+- Code refactoring.
+
+## [v1.4.0] - 2019-05-26
+### Fixed
+- Fix custom-format example.
+
+### Changed
+- Replace [Request](https://github.com/request/request) by standard https Node.js lib.
+
+## [v1.3.2] - 2019-05-04
+### Changed
+- Code style & JSDoc
+
 ## [v1.3.1] - 2019-01-07
 ### Fixed
 - [#12](https://github.com/ivanmarban/winston-telegram/pull/12) Fix comments. ([@is2ei](https://github.com/is2ei))
@@ -168,6 +190,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 [v2.1.0]: https://github.com/ivanmarban/winston-telegram/compare/v2.0.1...v2.1.0
 [v2.0.1]: https://github.com/ivanmarban/winston-telegram/compare/v2.0.0...v2.0.1
 [v2.0.0]: https://github.com/ivanmarban/winston-telegram/compare/v1.3.1...v2.0.0
+[v1.4.2]: https://github.com/ivanmarban/winston-telegram/compare/v1.4.1...v1.4.2
+[v1.4.1]: https://github.com/ivanmarban/winston-telegram/compare/v1.4.0...v1.4.1
+[v1.4.0]: https://github.com/ivanmarban/winston-telegram/compare/v1.3.2...v1.4.0
+[v1.3.2]: https://github.com/ivanmarban/winston-telegram/compare/v1.3.1...v1.3.2
 [v1.3.1]: https://github.com/ivanmarban/winston-telegram/compare/v1.3.0...v1.3.1
 [v1.3.0]: https://github.com/ivanmarban/winston-telegram/compare/v1.2.1...v1.3.0
 [v1.2.1]: https://github.com/ivanmarban/winston-telegram/compare/v1.2.0...v1.2.1
