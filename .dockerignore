@@ -1,0 +1,12 @@
+node_modules
+.github
+.git
+.editorconfig
+.eslintrc
+.gitignore
+.nycrc.yml
+.pre-commit-config.yml
+.prettierrc
+CHANGELOG.md
+LICENSE
+README.md
