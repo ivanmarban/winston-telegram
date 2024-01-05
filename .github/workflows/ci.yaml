@@ -1,0 +1,49 @@
+name: CI
+on:
+  pull_request:
+    branches: master
+  push:
+    branches: master
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: 
+          - 18
+          - 20
+    name: Node ${{ matrix.node }} test
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v4 
+      
+      - name: Setup Node.js v${{ matrix.node }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Test Coverage
+        run: npm run test:coverage
+      
+      - name: Coveralls Parallel
+        uses: coverallsapp/github-action@v2
+        with:
+          flag-name: run-${{ matrix.node }}
+          parallel: true
+
+  finish:
+    needs: tests
+    if: ${{ always() }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Coveralls Finished
+        uses: coverallsapp/github-action@v2
+        with:
+          parallel-finished: true
