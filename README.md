@@ -6,7 +6,7 @@ A [Telegram][0] transport for [winston][1].
 
 [![Version npm](https://img.shields.io/npm/v/winston-telegram.svg)](https://www.npmjs.com/package/winston-telegram)
 [![npm Downloads](https://img.shields.io/npm/dw/winston-telegram.svg)](https://npmcharts.com/compare/winston-telegram?minimal=true)
-[![Tests Status](https://github.com/ivanmarban/winston-telegram/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/ivanmarban/winston-telegram/actions/workflows/ci.yml)
+[![CI Status](https://github.com/ivanmarban/winston-telegram/actions/workflows/ci.yaml/badge.svg?branch=master)](https://github.com/ivanmarban/winston-telegram/actions/workflows/ci.yaml)
 [![Coverage Status](https://coveralls.io/repos/github/ivanmarban/winston-telegram/badge.svg?branch=master)](https://coveralls.io/github/ivanmarban/winston-telegram?branch=master)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
