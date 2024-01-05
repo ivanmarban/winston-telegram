@@ -1,0 +1,9 @@
+reporter:
+  - text
+  - lcovonly
+  - html
+check-coverage: true
+branches: 80.00
+lines: 80.00
+functions: 80.00
+statements: 80.00
