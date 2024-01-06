@@ -1,7 +1,7 @@
 {
   "name": "winston-telegram",
   "description": "A Telegram transport for winston",
-  "version": "2.6.0",
+  "version": "2.7.0",
   "author": "Ivan Marban",
   "repository": {
     "type": "git",
@@ -31,26 +31,27 @@
   "types": "lib/winston-telegram",
   "license": "MIT",
   "devDependencies": {
-    "chai": "^4.3.6",
+    "chai": "^4.3.10",
     "coveralls": "^3.1.1",
-    "eslint": "^8.15.0",
-    "eslint-config-standard": "^17.0.0",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-jsdoc": "^39.2.9",
-    "eslint-plugin-mocha": "^10.0.4",
-    "eslint-plugin-n": "^15.2.0",
+    "eslint": "^8.56.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-jsdoc": "^48.0.2",
+    "eslint-plugin-mocha": "^10.2.0",
+    "eslint-plugin-n": "^16.6.1",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^6.0.0",
-    "mocha": "^10.0.0",
-    "nock": "^13.2.4",
+    "eslint-plugin-promise": "^6.1.1",
+    "mocha": "^10.2.0",
+    "nock": "^13.4.0",
     "nyc": "^15.1.0",
     "prettier-standard": "^16.4.1",
-    "sinon": "^14.0.0",
+    "sinon": "^17.0.1",
     "winston": "^3.7.2"
   },
   "scripts": {
     "lint": "eslint lib test examples --color",
     "format": "prettier-standard 'lib/**/*.js' 'test/**/*.js' 'examples/**/*.js'",
-    "test": "nyc --reporter=text --reporter=html --reporter=lcovonly mocha"
+    "test": "mocha",
+    "test:coverage": "nyc npm run test"
   }
 }

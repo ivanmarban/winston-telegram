@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [v2.7.0] - 2024-01-06
+### Added
+- [#40](https://github.com/ivanmarban/winston-telegram/issues/40) Support for chats with threads enabled.
+
 ## [v2.6.0] - 2022-05-15
 ### Fixed
 - [#36](https://github.com/ivanmarban/winston-telegram/pull/36) Handle uncaught exceptions.
@@ -85,6 +89,28 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - `winston@3` support.
 
+## [v1.4.2] - 2019-12-11
+### Fixed
+- [#16](https://github.com/ivanmarban/winston-telegram/issues/16) Use `Buffer.byteLength` to compute the `Content-Length` header.
+
+## [v1.4.1] - 2019-06-22
+### Fixed
+- Fix custom-format example.
+
+### Changed
+- Code refactoring.
+
+## [v1.4.0] - 2019-05-26
+### Fixed
+- Fix custom-format example.
+
+### Changed
+- Replace [Request](https://github.com/request/request) by standard https Node.js lib.
+
+## [v1.3.2] - 2019-05-04
+### Changed
+- Code style & JSDoc
+
 ## [v1.3.1] - 2019-01-07
 ### Fixed
 - [#12](https://github.com/ivanmarban/winston-telegram/pull/12) Fix comments. ([@is2ei](https://github.com/is2ei))
@@ -151,7 +177,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [v0.1.0] - 2015-11-12
 - First version.
 
-[unreleased]: https://github.com/ivanmarban/winston-telegram/compare/v2.6.0...develop
+[unreleased]: https://github.com/ivanmarban/winston-telegram/compare/v2.7.0...develop
+[v2.7.0]: https://github.com/ivanmarban/winston-telegram/compare/v2.6.0...v2.7.0
 [v2.6.0]: https://github.com/ivanmarban/winston-telegram/compare/v2.5.0...v2.6.0
 [v2.5.0]: https://github.com/ivanmarban/winston-telegram/compare/v2.4.1...v2.5.0
 [v2.4.1]: https://github.com/ivanmarban/winston-telegram/compare/v2.4.0...v2.4.1
@@ -168,6 +195,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 [v2.1.0]: https://github.com/ivanmarban/winston-telegram/compare/v2.0.1...v2.1.0
 [v2.0.1]: https://github.com/ivanmarban/winston-telegram/compare/v2.0.0...v2.0.1
 [v2.0.0]: https://github.com/ivanmarban/winston-telegram/compare/v1.3.1...v2.0.0
+[v1.4.2]: https://github.com/ivanmarban/winston-telegram/compare/v1.4.1...v1.4.2
+[v1.4.1]: https://github.com/ivanmarban/winston-telegram/compare/v1.4.0...v1.4.1
+[v1.4.0]: https://github.com/ivanmarban/winston-telegram/compare/v1.3.2...v1.4.0
+[v1.3.2]: https://github.com/ivanmarban/winston-telegram/compare/v1.3.1...v1.3.2
 [v1.3.1]: https://github.com/ivanmarban/winston-telegram/compare/v1.3.0...v1.3.1
 [v1.3.0]: https://github.com/ivanmarban/winston-telegram/compare/v1.2.1...v1.3.0
 [v1.2.1]: https://github.com/ivanmarban/winston-telegram/compare/v1.2.0...v1.2.1
