@@ -34,18 +34,19 @@ logger.add(new TelegramLogger(options))
 
 Options:
 
-* __token:__ The Telegram bot authentication token. *[required]*
-* __chatId:__ The Telegram chatid you want to send to. *[required]*
-* __parseMode:__ The Telegram mode for parsing entities in the message text. See [formatting options][4] for more details. *[optional]*
-* __level:__ Level of messages that this transport should log. *[optional]* *[default info]*
-* __unique:__ Whether to log only the declared level and none above. *[boolean]* *[optional]*
-* __silent:__ Whether to suppress output. *[boolean]* *[optional]*
-* __disableNotification:__ Sends the message silently. *[boolean]* *[optional]*
-* __template:__ Format output message. *[string]* *[optional]*
-* __formatMessage:__ Format output message by own method. *[function]* *[optional]*
-* __handleExceptions:__ Handle uncaught exceptions. *[boolean]* *[optional]*
-* __batchingDelay:__ Time in ms within which to batch messages together. *[integer]* *[optional]* *[default 0 or disabled]*
-* __batchingSeparator:__ String with which to join batched messages with *[string]* *[default "\n\n"]*
+* `token` The Telegram bot authentication token. *[required]*
+* `chatId` The Telegram chatid you want to send to. *[required]*
+* `messageThreadId` The Telegram unique identifier of a message thread to which the message belongs. *[optional]*
+* `parseMode` The Telegram mode for parsing entities in the message text. See [formatting options][4] for more details. *[optional]*
+* `level` Level of messages that this transport should log. *[optional]* *[default info]*
+* `unique` Whether to log only the declared level and none above. *[boolean]* *[optional]*
+* `silent` Whether to suppress output. *[boolean]* *[optional]*
+* `disableNotification` Sends the message silently. *[boolean]* *[optional]*
+* `template` Format output message. *[string]* *[optional]*
+* `formatMessage` Format output message by own method. *[function]* *[optional]*
+* `handleExceptions` Handle uncaught exceptions. *[boolean]* *[optional]*
+* `batchingDelay` Time in ms within which to batch messages together. *[integer]* *[optional]* *[default 0 or disabled]*
+* `batchingSeparator` String with which to join batched messages with *[string]* *[default "\n\n"]*
 
 String template is based on named arguments:
 ``` js

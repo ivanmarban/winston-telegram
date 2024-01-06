@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [v2.7.0] - 2024-01-06
+### Added
+- [#40](https://github.com/ivanmarban/winston-telegram/issues/40) Support for chats with threads enabled.
+
 ## [v2.6.0] - 2022-05-15
 ### Fixed
 - [#36](https://github.com/ivanmarban/winston-telegram/pull/36) Handle uncaught exceptions.
@@ -173,7 +177,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [v0.1.0] - 2015-11-12
 - First version.
 
-[unreleased]: https://github.com/ivanmarban/winston-telegram/compare/v2.6.0...develop
+[unreleased]: https://github.com/ivanmarban/winston-telegram/compare/v2.7.0...develop
+[v2.7.0]: https://github.com/ivanmarban/winston-telegram/compare/v2.6.0...v2.7.0
 [v2.6.0]: https://github.com/ivanmarban/winston-telegram/compare/v2.5.0...v2.6.0
 [v2.5.0]: https://github.com/ivanmarban/winston-telegram/compare/v2.4.1...v2.5.0
 [v2.4.1]: https://github.com/ivanmarban/winston-telegram/compare/v2.4.0...v2.4.1
