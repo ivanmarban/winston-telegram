@@ -1,0 +1,14 @@
+.github
+.nyc_output
+coverage
+examples
+node_modules
+test
+.dockerignore
+.editorconfig
+.eslintrc
+.gitignore
+.nycrc.yaml
+.pre-commit-config.yaml
+.prettierrc
+Dockerfile
