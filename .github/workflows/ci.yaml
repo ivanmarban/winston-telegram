@@ -13,6 +13,7 @@ jobs:
         node: 
           - 18
           - 20
+          - 21
     name: Node ${{ matrix.node }} test
     steps:
       - name: Clone repository
