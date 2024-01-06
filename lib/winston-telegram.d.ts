@@ -10,6 +10,8 @@ declare namespace WinstonTelegram {
     token: string
     /** The Telegram chatid you want to send to. */
     chatId: number
+    /** The Telegram identifier of a message thread to which the message belongs. */
+    messageThreadId?: number
     /** The Telegram mode for parsing entities in the message text. */
     parseMode?: string
     /** Level of messages that this transport should log. (default "info") */

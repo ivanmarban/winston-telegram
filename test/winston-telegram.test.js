@@ -26,6 +26,8 @@ describe('winston-telegram', function () {
     it('Should have default options when instantiated', function (done) {
       const transport = new Transport({ token: 'foo', chatId: 'bar' })
 
+      assert.ok(transport.messageThreadId === '')
+      assert.ok(transport.parseMode === '')
       assert.ok(transport.level === 'info')
       assert.ok(transport.handleExceptions === true)
       assert.ok(transport.unique === false)
